@@ -9,6 +9,8 @@ const fileUpload = require('express-fileupload');
 //database
 const connectDB = require('./db/connect');
 
+const cors = require('cors');
+
 //routers
 const authRouter = require('./routes/authRoutes');
 const productRouter = require('./routes/productRoutes');
@@ -24,6 +26,7 @@ app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static('./public'))
 app.use(fileUpload())
+app.use(cors());
 
 app.get('/',(req, res)=>{
     res.send('e-commerce api')
